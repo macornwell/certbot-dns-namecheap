@@ -52,7 +52,7 @@ docker run -it --rm \
   -v $(pwd)/certs:/etc/letsencrypt \
   -v $(pwd)/logs:/var/log/letsencrypt \
   -v $(pwd)/namecheap.ini:/namecheap.ini \t
-  certbot-dns-namecheap certbot certonly \
+  certbot-dns-namecheap certonly \
   -a certbot-dns-namecheap:dns-namecheap \
   --certbot-dns-namecheap:dns-namecheap-credentials=/namecheap.ini \
   --agree-tos \
