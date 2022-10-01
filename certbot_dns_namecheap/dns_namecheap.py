@@ -9,7 +9,13 @@ from certbot import interfaces
 from certbot.plugins import dns_common
 from certbot.plugins import dns_common_lexicon
 
-from urllib2 import urlopen
+try:
+    from urllib2 import urlopen
+except ImportError:
+    try:
+        from urllib.request import urlopen
+    except ImportError:
+        raise Exception("neither urllib2 (py2) nor urllib (py3)? What is happening here?")
 
 logger = logging.getLogger(__name__)
 
