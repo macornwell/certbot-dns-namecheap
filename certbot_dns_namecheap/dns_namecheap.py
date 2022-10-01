@@ -9,13 +9,6 @@ from certbot import interfaces
 from certbot.plugins import dns_common
 from certbot.plugins import dns_common_lexicon
 
-try:
-    from urllib2 import urlopen
-except ImportError:
-    try:
-        from urllib.request import urlopen
-    except ImportError:
-        raise Exception("neither urllib2 (py2) nor urllib (py3)? What is happening here?")
 
 logger = logging.getLogger(__name__)
 
@@ -78,14 +71,13 @@ class _NamecheapLexiconClient(dns_common_lexicon.LexiconClient):
 
     def __init__(self, username, api_key, ttl, domain):
         super(_NamecheapLexiconClient, self).__init__()
-        my_ip = urlopen('http://ip.42.pl/raw').read()
         logger.debug(my_ip)
         self.provider = namecheap.Provider({
             'auth_username': username,
             'auth_token': api_key,
             'ttl': ttl,
             'domain': domain,
-            'auth_client_ip': my_ip
+            'auth_client_ip': '0.0.0.0'
         })
 
     def _handle_http_error(self, e, domain_name):

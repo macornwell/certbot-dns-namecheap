@@ -4,9 +4,7 @@ For now I'm just test stuff out here. I don't know what I'm doing and hope I hav
 
 ## Why did I fork in the first place?
 
-- use of urllib2 does not work in python3.
-  - side note maybe I should implement a check and not change the requirements to python3?
-- 'http://ip.42.pl/raw' does not work anymore and is needed to get the client IP (needed for Namecheap API)
+- Namechaep's api wants a client ip argument but according to [Lexicon](https://github.com/AnalogJ/lexicon/) and my testing you can just send any ip which is than updated on namecheaps side. #1
 - pip module
   - Not really the reason for the fork and I'll try to contact the original maintainer before I do something in that regard.
 
@@ -52,7 +50,7 @@ docker run -it --rm \
   -v $(pwd)/certs:/etc/letsencrypt \
   -v $(pwd)/logs:/var/log/letsencrypt \
   -v $(pwd)/namecheap.ini:/namecheap.ini \t
-  certbot-dns-namecheap certbot certonly \
+  certbot-dns-namecheap certonly \
   -a certbot-dns-namecheap:dns-namecheap \
   --certbot-dns-namecheap:dns-namecheap-credentials=/namecheap.ini \
   --agree-tos \
