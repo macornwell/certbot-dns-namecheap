@@ -15,7 +15,7 @@ except ImportError:
     try:
         from urllib.request import urlopen
     except ImportError:
-        raise Exception("neither urllib2 (py2) nor urllib (py3)? What is happening here?")
+        raise ImportError("neither urllib2 (py2) nor urllib (py3)? What is happening here?")
 
 logger = logging.getLogger(__name__)
 
