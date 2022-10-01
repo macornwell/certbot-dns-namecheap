@@ -1,3 +1,15 @@
+# Why this FORK?
+
+For now I'm just test stuff out here. I don't know what I'm doing and hope I have to do as little as possible.
+
+## Why did I fork in the first place?
+
+- use of urllib2 does not work in python3.
+  - side note maybe I should implement a check and not change the requirements to python3?
+- 'http://ip.42.pl/raw' does not work anymore and is needed to get the client IP (needed for Namecheap API)
+- pip module
+  - Not really the reason for the fork and I'll try to contact the original maintainer before I do something in that regard.
+
 # General
 
 This plugin automates the process of completing a ``dns-01`` challenge by creating, and subsequently removing, TXT records using the (XML-RPC-based) namecheap.com API.
@@ -33,11 +45,14 @@ The path to this file can be provided by using the `--certbot_dns_namecheap:dns-
 - **Recommended usage**. Create the credentials file and 2 folders for the certificates and logs and run:
 
 ```sh
+git clone https://github.com/knoxell/certbot-dns-namecheap.git
+cd certbot-dns-namecheap
+docker build . -t certbot-dns-namecheap
 docker run -it --rm \
   -v $(pwd)/certs:/etc/letsencrypt \
   -v $(pwd)/logs:/var/log/letsencrypt \
-  -v $(pwd)/namecheap.ini:/namecheap.ini \
-  schubc/certbot-dns-namecheap certonly \
+  -v $(pwd)/namecheap.ini:/namecheap.ini \t
+  certbot-dns-namecheap certbot certonly \
   -a certbot-dns-namecheap:dns-namecheap \
   --certbot-dns-namecheap:dns-namecheap-credentials=/namecheap.ini \
   --agree-tos \
@@ -53,7 +68,7 @@ docker run -it --rm \
 - If you know what you're doing install the plugin into the same python environment like `certbot`. In any other case follow the `Docker` approach above:
 
 ```sh
-git clone https://github.com/iHamsterball/certbot-dns-namecheap.git
+git clone https://github.com/knoxell/certbot-dns-namecheap.git
 pip install certbot-dns-namecheap/
 ```
 
