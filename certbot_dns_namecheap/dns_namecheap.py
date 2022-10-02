@@ -71,7 +71,6 @@ class _NamecheapLexiconClient(dns_common_lexicon.LexiconClient):
 
     def __init__(self, username, api_key, ttl, domain):
         super(_NamecheapLexiconClient, self).__init__()
-        logger.debug(my_ip)
         self.provider = namecheap.Provider({
             'auth_username': username,
             'auth_token': api_key,
