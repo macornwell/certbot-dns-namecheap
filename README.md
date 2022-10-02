@@ -54,6 +54,7 @@ docker run -it --rm \
   -a certbot-dns-namecheap:dns-namecheap \
   --certbot-dns-namecheap:dns-namecheap-credentials=/namecheap.ini \
   --agree-tos \
+  --no-eff-email \
   -email "your@mail.com" \
   -d example.com \
   --test-cert
@@ -83,6 +84,7 @@ certbot certonly \
   -a certbot-dns-namecheap:dns-namecheap \
   --certbot-dns-namecheap:dns-namecheap-credentials=/namecheap.ini \
   --agree-tos \
+  --no-eff-email \
   -email "your@mail.com" \
   -d example.com \
   --test-cert
