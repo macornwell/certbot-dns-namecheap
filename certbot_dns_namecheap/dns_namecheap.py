@@ -1,7 +1,6 @@
 """DNS Authenticator for Namecheap DNS."""
 import logging
 
-import zope.interface
 from lexicon.providers import namecheap
 
 from certbot import errors
@@ -15,8 +14,6 @@ logger = logging.getLogger(__name__)
 TOKEN_URL = 'https://api.namecheap.com/xml.response or https://api.sandbox.namecheap.com/xml.response'
 
 
-@zope.interface.implementer(interfaces.IAuthenticator)
-@zope.interface.provider(interfaces.IPluginFactory)
 class Authenticator(dns_common.DNSAuthenticator):
     """DNS Authenticator for Namecheap
 
