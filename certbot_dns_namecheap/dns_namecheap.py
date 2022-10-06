@@ -47,17 +47,16 @@ class Authenticator(dns_common.DNSAuthenticator):
         )
 
     def _perform(self, domain, validation_name, validation):
-        self._get_namecheap_client(domain).add_txt_record(domain, validation_name, validation)
+        self._get_namecheap_client().add_txt_record(domain, validation_name, validation)
 
     def _cleanup(self, domain, validation_name, validation):
-        self._get_namecheap_client(domain).del_txt_record(domain, validation_name, validation)
+        self._get_namecheap_client().del_txt_record(domain, validation_name, validation)
 
-    def _get_namecheap_client(self, domain):
+    def _get_namecheap_client(self):
         return _NamecheapLexiconClient(
             self.credentials.conf('username'),
             self.credentials.conf('api_key'),
-            self.ttl,
-            domain
+            self.ttl
         )
 
 
@@ -66,7 +65,7 @@ class _NamecheapLexiconClient(dns_common_lexicon.LexiconClient):
     Encapsulates all communication with the Namecheap API via Lexicon.
     """
 
-    def __init__(self, username, api_key, ttl, domain):
+    def __init__(self, username, api_key, ttl):
         super(_NamecheapLexiconClient, self).__init__()
 
         lexicon_options = {
