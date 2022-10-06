@@ -47,7 +47,7 @@ class NamecheapLexiconClientTest(unittest.TestCase, dns_test_common_lexicon.Base
         from certbot_dns_namecheap.dns_namecheap import _NamecheapLexiconClient
 
         self.client = _NamecheapLexiconClient(
-            USERNAME, API_KEY, 0, 'example.com'
+            USERNAME, API_KEY, 0
         )
 
         self.provider_mock = mock.MagicMock()
