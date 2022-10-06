@@ -18,11 +18,6 @@ install_requires = [
     'PyNamecheap'
 ]
 
-docs_extras = [
-    'Sphinx>=1.0',  # autodoc_member_order = 'bysource', autodoc_default_flags
-    'sphinx_rtd_theme',
-]
-
 setup(
     name='certbot-dns-namecheap',
     version=version,
@@ -57,9 +52,6 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=install_requires,
-    extras_require={
-        'docs': docs_extras,
-    },
     entry_points={
         'certbot.plugins': [
             'dns-namecheap = certbot_dns_namecheap.dns_namecheap:Authenticator',
