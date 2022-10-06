@@ -30,11 +30,11 @@ Use of this plugin requires a configuration file containing Namecheap API creden
 
 ```ini
 # Namecheap API credentials used by Certbot
-certbot_dns_namecheap:dns_namecheap_username=my-username
-certbot_dns_namecheap:dns_namecheap_api_key=my-api-key
+dns_namecheap_username=my-username
+dns_namecheap_api_key=my-api-key
 ```
 
-The path to this file can be provided by using the `--certbot_dns_namecheap:dns-namecheap-credentials` command-line argument.
+The path to this file can be provided by using the `--dns-namecheap-credentials` command-line argument.
 
 ## Usage
 
@@ -51,8 +51,8 @@ docker run -it --rm \
   -v $(pwd)/logs:/var/log/letsencrypt \
   -v $(pwd)/namecheap.ini:/namecheap.ini \t
   certbot-dns-namecheap certonly \
-  -a certbot-dns-namecheap:dns-namecheap \
-  --certbot-dns-namecheap:dns-namecheap-credentials=/namecheap.ini \
+  -a dns-namecheap \
+  --dns-namecheap-credentials=/namecheap.ini \
   --agree-tos \
   --no-eff-email \
   -email "your@mail.com" \
@@ -81,8 +81,8 @@ certbot plugins
 
 ```sh
 certbot certonly \
-  -a certbot-dns-namecheap:dns-namecheap \
-  --certbot-dns-namecheap:dns-namecheap-credentials=/namecheap.ini \
+  -a dns-namecheap \
+  --dns-namecheap-credentials=/namecheap.ini \
   --agree-tos \
   --no-eff-email \
   -email "your@mail.com" \
