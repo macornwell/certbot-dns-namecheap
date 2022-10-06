@@ -68,13 +68,23 @@ class _NamecheapLexiconClient(dns_common_lexicon.LexiconClient):
 
     def __init__(self, username, api_key, ttl, domain):
         super(_NamecheapLexiconClient, self).__init__()
-        self.provider = namecheap.Provider({
+
+        lexicon_options = {
+            'ttl': ttl,
+            'domain': domain
+        }
+        namecheap_options = {
             'auth_username': username,
             'auth_token': api_key,
-            'ttl': ttl,
-            'domain': domain,
             'auth_client_ip': '0.0.0.0'
-        })
+        }
+        config = dns_common_lexicon.build_lexicon_config(
+            'namecheap',
+            lexicon_options,
+            namecheap_options
+        )
+
+        self.provider = namecheap.Provider(config)
 
     def _handle_http_error(self, e, domain_name):
         hint = None
