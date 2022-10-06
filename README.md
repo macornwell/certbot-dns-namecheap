@@ -35,7 +35,8 @@ dns_namecheap_api_key=my-api-key
 ```
 The file should only be readable by root. If other users or programms get access to your api credentials they can takeover your namecheap account aswell as domains!
 ```bash
-chmod 0600 /path/to/namecheap.ini
+sudo chown root:root /path/to/namecheap.ini
+sudo chmod 0600 /path/to/namecheap.ini
 ```
 
 The path to this file can be provided by using the `--dns-namecheap-credentials` command-line argument.
