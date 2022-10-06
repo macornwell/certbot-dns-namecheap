@@ -8,6 +8,7 @@ from certbot import interfaces
 from certbot.plugins import dns_common
 from certbot.plugins import dns_common_lexicon
 
+from acme import challenges
 
 logger = logging.getLogger(__name__)
 
@@ -35,6 +36,17 @@ class Authenticator(dns_common.DNSAuthenticator):
     def more_info(self):  # pylint: disable=missing-docstring,no-self-use
         return 'This plugin configures a DNS TXT record to respond to a dns-01 challenge using ' + \
                'the Namecheap API.'
+
+    def get_chall_pref(self, domain: str) -> Iterable[Type[Challenge]]:
+        """Return `collections.Iterable` of challenge preferences.
+        :param str domain: Domain for which challenge preferences are sought.
+        :returns: `collections.Iterable` of challenge types (subclasses of
+            :class:`acme.challenges.Challenge`) with the most
+            preferred challenges first. If a type is not specified, it means the
+            Authenticator cannot perform the challenge.
+        :rtype: `collections.Iterable`
+        """
+        return [challenges.DNS01]
 
     def _setup_credentials(self):
         self.credentials = self._configure_credentials(
