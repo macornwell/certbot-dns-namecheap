@@ -62,10 +62,10 @@ docker run -it --rm \
   --no-eff-email \
   -email "your@mail.com" \
   -d example.com \
-  --test-cert
+  --dry-run
 ```
 
-- After a successful run, remove the last parameter `--test-cert` which enabled [staging server](https://letsencrypt.org/docs/staging-environment/) and run again.
+- After a successful run, remove the last parameter `--dry-run` which enabled [staging server](https://letsencrypt.org/docs/staging-environment/) and run again.
 
 ## Python
 
@@ -92,5 +92,5 @@ certbot certonly \
   --no-eff-email \
   -email "your@mail.com" \
   -d example.com \
-  --test-cert
+  --dry-run
   ```
