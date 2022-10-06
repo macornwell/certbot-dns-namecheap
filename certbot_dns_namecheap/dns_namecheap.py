@@ -37,7 +37,7 @@ class Authenticator(dns_common.DNSAuthenticator):
         return 'This plugin configures a DNS TXT record to respond to a dns-01 challenge using ' + \
                'the Namecheap API.'
 
-    def get_chall_pref(self, domain: str) -> Iterable[Type[Challenge]]:
+    def get_chall_pref(self, domain):
         """Return `collections.Iterable` of challenge preferences.
         :param str domain: Domain for which challenge preferences are sought.
         :returns: `collections.Iterable` of challenge types (subclasses of
