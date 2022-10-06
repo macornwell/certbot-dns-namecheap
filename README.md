@@ -33,6 +33,10 @@ Use of this plugin requires a configuration file containing Namecheap API creden
 dns_namecheap_username=my-username
 dns_namecheap_api_key=my-api-key
 ```
+The file should only be readable by root. If other users or programms get access to your api credentials they can takeover your namecheap account aswell as domains!
+```bash
+chmod 0600 /path/to/namecheap.ini
+```
 
 The path to this file can be provided by using the `--dns-namecheap-credentials` command-line argument.
 
