@@ -82,7 +82,6 @@ class _NamecheapLexiconClient(dns_common_lexicon.LexiconClient):
 
         lexicon_options = {
             'ttl': ttl,
-            'domain': domain
         }
         namecheap_options = {
             'auth_username': username,
