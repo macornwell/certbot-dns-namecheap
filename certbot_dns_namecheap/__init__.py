@@ -8,7 +8,7 @@ Named Arguments
 ---------------
 
 ===================================  ==========================================
-``--certbot-dns-namecheap:dns-namecheap-credentials`` Namecheap credentials_ INI file.
+``--dns-namecheap-credentials`` Namecheap credentials_ INI file.
                                                       (Required)
 
 ===================================  ==========================================
@@ -25,8 +25,8 @@ API credentials for an account with the following access rules:
    :caption: Example credentials file:
 
 	# Namecheap API credentials used by Certbot
-	certbot_dns_namecheap:dns_namecheap_username=my-username
-	certbot_dns_namecheap:dns_namecheap_api_key=my-api-key
+	dns_namecheap_username=my-username
+	dns_namecheap_api_key=my-api-key
 
 The path to this file must be provided using the
 ``--certbot-dns-namecheap:dns-namecheap-credentials`` command-line argument.
@@ -54,8 +54,8 @@ Examples
    :caption: To acquire a certificate for ``example.com``
 
    certbot certonly \\
-     -a certbot-dns-namecheap:dns-namecheap \\
-     --certbot-dns-namecheap:dns-namecheap-credentials= ~/.secrets/certbot/namecheap.ini \\
+     -a dns-namecheap \\
+     --dns-namecheap-credentials= ~/.secrets/certbot/namecheap.ini \\
      -d example.com
 
 .. code-block:: bash
@@ -63,8 +63,8 @@ Examples
              ``www.example.com``
 
    certbot certonly \\
-     -a certbot-dns-namecheap:dns-namecheap \\
-     --certbot-dns-namecheap:dns-namecheap-credentials= ~/.secrets/certbot/namecheap.ini \\
+     -a dns-namecheap \\
+     --dns-namecheap-credentials= ~/.secrets/certbot/namecheap.ini \\
      -d example.com
      -d www.example.com
 
