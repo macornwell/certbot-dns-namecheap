@@ -1,3 +1,5 @@
+Not affiliated
+
 # Why this FORK?
 
 For now I'm just test stuff out here. I don't know what I'm doing and hope I have to do as little as possible.
@@ -6,7 +8,13 @@ For now I'm just test stuff out here. I don't know what I'm doing and hope I hav
 
 - Namechaep's api wants a client ip argument but according to [Lexicon](https://github.com/AnalogJ/lexicon/) and my testing you can just send any ip which is than updated on namecheaps side. #1
 - pip module
-  - Not really the reason for the fork and I'll try to contact the original maintainer before I do something in that regard.
+  - [We're on PyPi now](https://pypi.org/project/certbot-dns-namecheap/)! * yay *
+
+# How to install
+
+```bash
+pip install certbot-dns-namecheap
+```
 
 # General
 
