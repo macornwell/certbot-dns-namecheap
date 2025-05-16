@@ -54,7 +54,8 @@ class Authenticator(dns_common.DNSAuthenticator):
             'Namecheap credentials INI file',
             {
                 'username': 'Namecheap username',
-                'api_key': 'Namecheap api key'
+                'api_key': 'Namecheap api key',
+                'client_ip': 'Client Ip'
             }
         )
 
@@ -68,6 +69,7 @@ class Authenticator(dns_common.DNSAuthenticator):
         return _NamecheapLexiconClient(
             self.credentials.conf('username'),
             self.credentials.conf('api_key'),
+            self.credentials.conf('client_ip'),
             self.ttl
         )
 
@@ -77,7 +79,7 @@ class _NamecheapLexiconClient(dns_common_lexicon.LexiconClient):
     Encapsulates all communication with the Namecheap API via Lexicon.
     """
 
-    def __init__(self, username, api_key, ttl):
+    def __init__(self, username, api_key, client_ip, ttl):
         super(_NamecheapLexiconClient, self).__init__()
 
         lexicon_options = {
@@ -86,7 +88,7 @@ class _NamecheapLexiconClient(dns_common_lexicon.LexiconClient):
         namecheap_options = {
             'auth_username': username,
             'auth_token': api_key,
-            'auth_client_ip': '0.0.0.0'
+            'auth_client_ip': client_ip,
         }
         config = dns_common_lexicon.build_lexicon_config(
             'namecheap',
